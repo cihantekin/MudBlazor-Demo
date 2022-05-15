@@ -52,7 +52,6 @@ else
                         <MudTextField T="string" @bind-Text="model.Name" Label="Team Name" Required="true" RequiredError="Team Name is required!" />
                         <MudTextField T="string" @bind-Text="model.Stadium" Label="Stadium Name" Required="true" RequiredError="Stadium Name is required!" />
                         <MudTextField T="string" @bind-Text="model.City" Label="City" Required="true" RequiredError="City is required!" />
-                        @*<MudDatePicker @bind-Date="model.FoundationYear" Label="Foundation Year" Required="true" RequiredError="Foundation Year is required!" />*@
                         <MudDatePicker Label="Foundation Year" Required="true" RequiredError="Foundation Year is required!" HelperText="@model.FoundationYear?.ToShortDateString()" @bind-Date="model.FoundationYear" OpenTo="OpenTo.Year" FixMonth="@DateTime.Today.Month" FixDay="@DateTime.Today.Day" DateFormat="yyyy" />
                         <MudNumericField @bind-Value="model.SupporterCount" Label="Supporters Count" Required="true" RequiredError="Supporters Count is required!" />
                         <MudRating @bind-SelectedValue="model.Rating" Label="Rating" MaxValue="10" For="@(() => model.Rating)" />
@@ -67,7 +66,7 @@ else
         </MudGrid>
     </EditForm>
 
-    <MudDivider DividerType="DividerType.Inset" Class="mt-5" />
+    <MudDivider DividerType="DividerType.FullWidth" Class="mt-8" />
     <MudText Class="mt-8">Supporters chart! </MudText>
     <MudPaper>
         <MudChart ChartType="ChartType.Pie" InputData="@chartData" InputLabels="@teams" Width="300px" Height="300px" />
@@ -95,7 +94,6 @@ else
         Snackbar.Add("The team added successfully!", Severity.Success);
         CleanUp();
         DrawChart();
-        //StateHasChanged();
     }
 
     private void Delete(string name)
@@ -106,6 +104,7 @@ else
         if (result)
         {
             Snackbar.Add("The team removed successfully!", Severity.Success);
+            DrawChart();
         }
         else
         {
