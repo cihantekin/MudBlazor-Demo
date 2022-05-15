@@ -52,7 +52,7 @@ else
                         <MudTextField T="string" @bind-Text="model.Name" Label="Team Name" Required="true" RequiredError="Team Name is required!" />
                         <MudTextField T="string" @bind-Text="model.Stadium" Label="Stadium Name" Required="true" RequiredError="Stadium Name is required!" />
                         <MudTextField T="string" @bind-Text="model.City" Label="City" Required="true" RequiredError="City is required!" />
-                        <MudDatePicker Label="Foundation Year" Required="true" RequiredError="Foundation Year is required!" HelperText="@model.FoundationYear?.ToShortDateString()" @bind-Date="model.FoundationYear" OpenTo="OpenTo.Year" FixMonth="@DateTime.Today.Month" FixDay="@DateTime.Today.Day" DateFormat="yyyy" />
+                        <MudDatePicker MinDate="DateTime.Now.AddYears(-250)" Label="Foundation Year" Required="true" RequiredError="Foundation Year is required!" HelperText="@model.FoundationYear?.ToShortDateString()" @bind-Date="model.FoundationYear" OpenTo="OpenTo.Year" FixMonth="@DateTime.Today.Month" FixDay="@DateTime.Today.Day" DateFormat="yyyy" />
                         <MudNumericField @bind-Value="model.SupporterCount" Label="Supporters Count" Required="true" RequiredError="Supporters Count is required!" />
                         <MudRating @bind-SelectedValue="model.Rating" Label="Rating" MaxValue="10" For="@(() => model.Rating)" />
                         <MudColorPicker Label="Team Color 1" @bind-Text="colorValue1" Style="@($"color: {colorValue1};")" Placeholder="Select Color" />
