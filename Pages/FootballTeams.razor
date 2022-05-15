@@ -91,6 +91,7 @@ else
         model.Colors = string.Join(",", new string[] { colorValue1, colorValue2 });
         footballTeamsService.AddFootballTeam(model);
         Snackbar.Add("The team added successfully!", Severity.Success);
+        CleanUp();
         StateHasChanged();
     }
 
@@ -107,5 +108,12 @@ else
         {
             Snackbar.Add("An error occured!", Severity.Error);
         }
+    }
+
+    private void CleanUp()
+    {
+        model = new FootballTeam();
+        colorValue1 = "";
+        colorValue2 = "";
     }
 }
